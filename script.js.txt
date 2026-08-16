@@ -1,0 +1,1083 @@
+/**
+ * DUMITH ONLINE MARKET - JAVASCRIPT
+ * Fully functional frontend marketplace
+ */
+
+// ========================================
+// SAMPLE PRODUCT DATA
+// ========================================
+const sampleProducts = [
+    {
+        id: 1,
+        name: "iPhone 13 Pro 256GB",
+        category: "mobile-phones",
+        condition: "Like New",
+        price: 185000,
+        oldPrice: 280000,
+        location: "Colombo",
+        seller: "Nimal Perera",
+        phone: "0771234567",
+        description: "iPhone 13 Pro in excellent condition. Battery health 96%. Comes with original box, charger, and case. No scratches or dents. Used for 8 months only.",
+        image: "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=400&h=300&fit=crop",
+        date: "2024-08-10",
+        popularity: 95
+    },
+    {
+        id: 2,
+        name: "Dell XPS 15 Laptop",
+        category: "laptops-computers",
+        condition: "Like New",
+        price: 245000,
+        oldPrice: 380000,
+        location: "Kandy",
+        seller: "Sunil Fernando",
+        phone: "0772345678",
+        description: "Dell XPS 15 with Intel i7, 16GB RAM, 512GB SSD. 4K display. Perfect for work and gaming. Under warranty for 1 more year.",
+        image: "https://images.unsplash.com/photo-1593642632823-8f78536788c6?w=400&h=300&fit=crop",
+        date: "2024-08-12",
+        popularity: 88
+    },
+    {
+        id: 3,
+        name: "Samsung 55" Smart TV",
+        category: "electronics",
+        condition: "Good",
+        price: 85000,
+        oldPrice: 145000,
+        location: "Gampaha",
+        seller: "Kamal Silva",
+        phone: "0773456789",
+        description: "Samsung 55 inch 4K Smart TV. Crystal UHD display. Built-in apps Netflix, YouTube. Remote included. Minor scratch on stand.",
+        image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop",
+        date: "2024-08-08",
+        popularity: 72
+    },
+    {
+        id: 4,
+        name: "Ergonomic Office Chair",
+        category: "furniture",
+        condition: "Good",
+        price: 22000,
+        oldPrice: 45000,
+        location: "Colombo",
+        seller: "Priya Rajapakse",
+        phone: "0774567890",
+        description: "High-back ergonomic office chair with lumbar support. Adjustable height and armrests. Mesh back for breathability. Very comfortable.",
+        image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?w=400&h=300&fit=crop",
+        date: "2024-08-14",
+        popularity: 65
+    },
+    {
+        id: 5,
+        name: "Yamaha FZ Motorcycle",
+        category: "vehicles",
+        condition: "Used",
+        price: 320000,
+        oldPrice: 480000,
+        location: "Galle",
+        seller: "Rohan Weerasinghe",
+        phone: "0775678901",
+        description: "Yamaha FZ 2019 model. 25,000 km driven. Regularly serviced. New tires installed last month. All documents clear and up to date.",
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop",
+        date: "2024-08-05",
+        popularity: 91
+    },
+    {
+        id: 6,
+        name: "Wooden Dining Table Set",
+        category: "furniture",
+        condition: "Good",
+        price: 45000,
+        oldPrice: 85000,
+        location: "Negombo",
+        seller: "Anjali De Silva",
+        phone: "0776789012",
+        description: "Solid teak wood dining table with 6 chairs. Seats 6 people comfortably. Minor wear on surface. Perfect for family dining.",
+        image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=400&h=300&fit=crop",
+        date: "2024-08-11",
+        popularity: 58
+    },
+    {
+        id: 7,
+        name: "Sony WH-1000XM4 Headphones",
+        category: "electronics",
+        condition: "Like New",
+        price: 52000,
+        oldPrice: 85000,
+        location: "Colombo",
+        seller: "Dinesh Bandara",
+        phone: "0777890123",
+        description: "Sony noise cancelling headphones. Amazing sound quality. Used only a few times. Comes with carrying case and all accessories.",
+        image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400&h=300&fit=crop",
+        date: "2024-08-13",
+        popularity: 82
+    },
+    {
+        id: 8,
+        name: "Nike Air Max Sneakers",
+        category: "fashion",
+        condition: "Good",
+        price: 8500,
+        oldPrice: 18000,
+        location: "Jaffna",
+        seller: "Fathima Razeek",
+        phone: "0778901234",
+        description: "Nike Air Max size 9. White color. Worn a few times. Clean and well maintained. Original box included.",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop",
+        date: "2024-08-09",
+        popularity: 45
+    },
+    {
+        id: 9,
+        name: "LG Washing Machine 7kg",
+        category: "home-appliances",
+        condition: "Used",
+        price: 35000,
+        oldPrice: 65000,
+        location: "Kandy",
+        seller: "Mohamed Farook",
+        phone: "0779012345",
+        description: "LG front load washing machine. 7kg capacity. Fully automatic. All functions working perfectly. 3 years old.",
+        image: "https://images.unsplash.com/photo-1626806775351-538068a21838?w=400&h=300&fit=crop",
+        date: "2024-08-06",
+        popularity: 60
+    },
+    {
+        id: 10,
+        name: "Samsung Galaxy S22 Ultra",
+        category: "mobile-phones",
+        condition: "Good",
+        price: 165000,
+        oldPrice: 250000,
+        location: "Colombo",
+        seller: "Tharindu Jayasuriya",
+        phone: "0770123456",
+        description: "Samsung Galaxy S22 Ultra 128GB. Phantom Black. S Pen included. Minor scratches on back. Screen protector applied.",
+        image: "https://images.unsplash.com/photo-1610945265078-3858a0828671?w=400&h=300&fit=crop",
+        date: "2024-08-15",
+        popularity: 90
+    },
+    {
+        id: 11,
+        name: "MacBook Air M1",
+        category: "laptops-computers",
+        condition: "Like New",
+        price: 195000,
+        oldPrice: 320000,
+        location: "Gampaha",
+        seller: "Chamari Athapaththu",
+        phone: "0771122334",
+        description: "MacBook Air M1 chip, 8GB RAM, 256GB SSD. Space Gray. Battery cycle count only 45. Perfect condition with original charger.",
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
+        date: "2024-08-07",
+        popularity: 93
+    },
+    {
+        id: 12,
+        name: "Canon EOS 200D Camera",
+        category: "electronics",
+        condition: "Good",
+        price: 78000,
+        oldPrice: 125000,
+        location: "Galle",
+        seller: "Sajith Kumara",
+        phone: "0772233445",
+        description: "Canon EOS 200D with 18-55mm kit lens. 24MP DSLR. Great for beginners. Includes memory card and camera bag.",
+        image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop",
+        date: "2024-08-04",
+        popularity: 75
+    },
+    {
+        id: 13,
+        name: "Honda Dio Scooter",
+        category: "vehicles",
+        condition: "Used",
+        price: 145000,
+        oldPrice: 220000,
+        location: "Negombo",
+        seller: "Lakmal Perera",
+        phone: "0773344556",
+        description: "Honda Dio 2020 model. 18,000 km. Well maintained. New battery. Ideal for daily commuting. All papers clear.",
+        image: "https://images.unsplash.com/photo-1558618047-f4b511e6dcca?w=400&h=300&fit=crop",
+        date: "2024-08-03",
+        popularity: 68
+    },
+    {
+        id: 14,
+        name: "Leather Sofa Set 3+2",
+        category: "furniture",
+        condition: "Used",
+        price: 65000,
+        oldPrice: 120000,
+        location: "Colombo",
+        seller: "Ruwanthi Fernando",
+        phone: "0774455667",
+        description: "Genuine leather sofa set - 3 seater and 2 seater. Brown color. Comfortable cushions. Some signs of use but still in good shape.",
+        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop",
+        date: "2024-08-02",
+        popularity: 55
+    },
+    {
+        id: 15,
+        name: "Adidas Sports Jacket",
+        category: "fashion",
+        condition: "Like New",
+        price: 5500,
+        oldPrice: 12000,
+        location: "Kandy",
+        seller: "Ishara Madushan",
+        phone: "0775566778",
+        description: "Adidas original sports jacket. Size L. Black color. Worn only twice. Perfect for workouts or casual wear.",
+        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=300&fit=crop",
+        date: "2024-08-01",
+        popularity: 40
+    },
+    {
+        id: 16,
+        name: "Panasonic Microwave Oven",
+        category: "home-appliances",
+        condition: "Good",
+        price: 12000,
+        oldPrice: 22000,
+        location: "Jaffna",
+        seller: "Vithya Sivapalan",
+        phone: "0776677889",
+        description: "Panasonic 25L microwave oven. Grill function. Digital controls. All functions working. Clean interior.",
+        image: "https://images.unsplash.com/photo-1585659722983-3a675dabf23d?w=400&h=300&fit=crop",
+        date: "2024-07-30",
+        popularity: 50
+    }
+];
+
+// ========================================
+// STATE MANAGEMENT
+// ========================================
+let products = [...sampleProducts];
+let cart = JSON.parse(localStorage.getItem('dom_cart')) || [];
+let wishlist = JSON.parse(localStorage.getItem('dom_wishlist')) || [];
+let currentFilter = {
+    search: '',
+    category: 'all',
+    maxPrice: 500000,
+    conditions: ['Like New', 'Good', 'Used'],
+    location: 'all',
+    sort: 'newest'
+};
+
+// ========================================
+// UTILITY FUNCTIONS
+// ========================================
+function formatPrice(price) {
+    return 'Rs. ' + price.toLocaleString('en-LK');
+}
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-LK', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+
+    const icons = {
+        success: 'fa-check-circle',
+        error: 'fa-times-circle',
+        warning: 'fa-exclamation-circle',
+        info: 'fa-info-circle'
+    };
+
+    toast.innerHTML = `
+        <i class="fas ${icons[type] || icons.info}"></i>
+        <span class="toast-message">${message}</span>
+        <button class="toast-close" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        if (toast.parentElement) toast.remove();
+    }, 3000);
+}
+
+function getCategoryName(cat) {
+    const names = {
+        'mobile-phones': 'Mobile Phones',
+        'laptops-computers': 'Laptops & Computers',
+        'electronics': 'Electronics',
+        'furniture': 'Furniture',
+        'vehicles': 'Vehicles',
+        'fashion': 'Fashion',
+        'home-appliances': 'Home Appliances',
+        'other': 'Other'
+    };
+    return names[cat] || cat;
+}
+
+// ========================================
+// CART FUNCTIONS
+// ========================================
+function saveCart() {
+    localStorage.setItem('dom_cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById('cart-count').textContent = count;
+}
+
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const existing = cart.find(item => item.id === productId);
+    if (existing) {
+        existing.qty++;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            qty: 1
+        });
+    }
+
+    saveCart();
+    showToast(`${product.name} added to cart!`, 'success');
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    renderCart();
+}
+
+function updateCartQty(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) return;
+
+    item.qty += change;
+    if (item.qty <= 0) {
+        removeFromCart(productId);
+        return;
+    }
+
+    saveCart();
+    renderCart();
+}
+
+function clearCart() {
+    cart = [];
+    saveCart();
+    renderCart();
+    showToast('Cart cleared', 'info');
+}
+
+function renderCart() {
+    const itemsContainer = document.getElementById('cart-items');
+    const emptyState = document.getElementById('cart-empty');
+    const footer = document.getElementById('cart-footer');
+
+    if (cart.length === 0) {
+        itemsContainer.style.display = 'none';
+        emptyState.style.display = 'block';
+        footer.style.display = 'none';
+        return;
+    }
+
+    itemsContainer.style.display = 'flex';
+    emptyState.style.display = 'none';
+    footer.style.display = 'block';
+
+    itemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-info">
+                <h4>${item.name}</h4>
+                <p>${formatPrice(item.price)}</p>
+            </div>
+            <div class="cart-item-actions">
+                <button class="qty-btn" onclick="updateCartQty(${item.id}, -1)">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <span class="cart-item-qty">${item.qty}</span>
+                <button class="qty-btn" onclick="updateCartQty(${item.id}, 1)">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <span class="cart-item-price">${formatPrice(item.price * item.qty)}</span>
+            <button class="remove-btn" onclick="removeFromCart(${item.id})">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    `).join('');
+
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    document.getElementById('cart-subtotal').textContent = formatPrice(subtotal);
+    document.getElementById('cart-total').textContent = formatPrice(subtotal);
+}
+
+// ========================================
+// WISHLIST FUNCTIONS
+// ========================================
+function saveWishlist() {
+    localStorage.setItem('dom_wishlist', JSON.stringify(wishlist));
+    updateWishlistCount();
+}
+
+function updateWishlistCount() {
+    document.getElementById('wishlist-count').textContent = wishlist.length;
+}
+
+function toggleWishlist(productId) {
+    const index = wishlist.indexOf(productId);
+    const product = products.find(p => p.id === productId);
+
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        showToast('Removed from wishlist', 'info');
+    } else {
+        wishlist.push(productId);
+        showToast('Added to wishlist!', 'success');
+    }
+
+    saveWishlist();
+    renderProducts();
+    renderWishlist();
+}
+
+function removeFromWishlist(productId) {
+    const index = wishlist.indexOf(productId);
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        saveWishlist();
+        renderProducts();
+        renderWishlist();
+        showToast('Removed from wishlist', 'info');
+    }
+}
+
+function renderWishlist() {
+    const container = document.getElementById('wishlist-items');
+    const emptyState = document.getElementById('wishlist-empty');
+
+    if (wishlist.length === 0) {
+        container.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+    }
+
+    container.style.display = 'flex';
+    emptyState.style.display = 'none';
+
+    const wishlistProducts = products.filter(p => wishlist.includes(p.id));
+
+    container.innerHTML = wishlistProducts.map(product => `
+        <div class="wishlist-item">
+            <img src="${product.image}" alt="${product.name}">
+            <div class="wishlist-item-info">
+                <h4>${product.name}</h4>
+                <p>${formatPrice(product.price)} · ${product.location}</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id}); closeModal('wishlist-modal')">
+                <i class="fas fa-cart-plus"></i>
+            </button>
+            <button class="remove-btn" onclick="removeFromWishlist(${product.id})">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    `).join('');
+}
+
+// ========================================
+// PRODUCT RENDERING & FILTERING
+// ========================================
+function getFilteredProducts() {
+    let filtered = products.filter(product => {
+        const matchesSearch = product.name.toLowerCase().includes(currentFilter.search.toLowerCase()) ||
+                             product.description.toLowerCase().includes(currentFilter.search.toLowerCase());
+        const matchesCategory = currentFilter.category === 'all' || product.category === currentFilter.category;
+        const matchesPrice = product.price <= currentFilter.maxPrice;
+        const matchesCondition = currentFilter.conditions.includes(product.condition);
+        const matchesLocation = currentFilter.location === 'all' || product.location === currentFilter.location;
+
+        return matchesSearch && matchesCategory && matchesPrice && matchesCondition && matchesLocation;
+    });
+
+    // Sort
+    switch (currentFilter.sort) {
+        case 'price-low':
+            filtered.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-high':
+            filtered.sort((a, b) => b.price - a.price);
+            break;
+        case 'popular':
+            filtered.sort((a, b) => b.popularity - a.popularity);
+            break;
+        case 'newest':
+        default:
+            filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
+    }
+
+    return filtered;
+}
+
+function renderProducts() {
+    const grid = document.getElementById('products-grid');
+    const emptyState = document.getElementById('empty-products');
+    const filtered = getFilteredProducts();
+
+    document.getElementById('showing-count').textContent = filtered.length;
+    document.getElementById('total-count').textContent = products.length;
+
+    if (filtered.length === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+    }
+
+    grid.style.display = 'grid';
+    emptyState.style.display = 'none';
+
+    grid.innerHTML = filtered.map((product, index) => `
+        <div class="product-card fade-in" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                <div class="product-badges">
+                    <span class="badge-condition badge-${product.condition.toLowerCase().replace(' ', '-')}">${product.condition}</span>
+                </div>
+                <button class="wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}" 
+                        onclick="toggleWishlist(${product.id})" title="Add to Wishlist">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+            <div class="product-info">
+                <span class="product-category">${getCategoryName(product.category)}</span>
+                <h3 class="product-name">${product.name}</h3>
+                <div class="product-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> ${product.location}</span>
+                    <span><i class="fas fa-user"></i> ${product.seller}</span>
+                </div>
+                <div class="product-price-row">
+                    <span class="product-price">${formatPrice(product.price)}</span>
+                    ${product.oldPrice ? `<span class="product-old-price">${formatPrice(product.oldPrice)}</span>` : ''}
+                </div>
+                <div class="product-actions">
+                    <button class="btn btn-outline btn-sm" onclick="openProductModal(${product.id})">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">
+                        <i class="fas fa-cart-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ========================================
+// PRODUCT DETAILS MODAL
+// ========================================
+function openProductModal(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const content = document.getElementById('product-details-content');
+    const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
+
+    content.innerHTML = `
+        <div class="product-detail-image">
+            <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="product-detail-info">
+            <span class="badge-condition badge-${product.condition.toLowerCase().replace(' ', '-')}">${product.condition}</span>
+            <h2>${product.name}</h2>
+            <div class="product-detail-meta">
+                <span><i class="fas fa-tag"></i> ${getCategoryName(product.category)}</span>
+                <span><i class="fas fa-map-marker-alt"></i> ${product.location}</span>
+                <span><i class="fas fa-calendar"></i> ${formatDate(product.date)}</span>
+            </div>
+            <div class="product-detail-price">
+                ${formatPrice(product.price)}
+                ${product.oldPrice ? `<span class="old">${formatPrice(product.oldPrice)}</span>` : ''}
+                ${discount > 0 ? `<span style="color: var(--secondary); font-size: 1rem; margin-left: 0.5rem;">(-${discount}%)</span>` : ''}
+            </div>
+            <p class="product-detail-desc">${product.description}</p>
+            <div class="seller-card">
+                <h4>Seller Information</h4>
+                <p><i class="fas fa-user"></i> ${product.seller}</p>
+                <p style="margin-top: 0.25rem; font-weight: 500; color: var(--gray);">
+                    <i class="fas fa-phone"></i> ${product.phone}
+                </p>
+            </div>
+            <div class="detail-actions">
+                <button class="btn btn-primary" onclick="addToCart(${product.id}); closeModal('product-modal')">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                </button>
+                <button class="btn btn-outline" onclick="toggleWishlist(${product.id})">
+                    <i class="fas fa-heart"></i> ${wishlist.includes(product.id) ? 'Remove from' : 'Add to'} Wishlist
+                </button>
+                <a href="tel:${product.phone}" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> Contact Seller
+                </a>
+            </div>
+        </div>
+    `;
+
+    openModal('product-modal');
+}
+
+// ========================================
+// MODAL FUNCTIONS
+// ========================================
+function openModal(modalId) {
+    document.getElementById(modalId).classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function closeAllModals() {
+    document.querySelectorAll('.modal').forEach(modal => modal.classList.remove('active'));
+    document.body.style.overflow = '';
+}
+
+// ========================================
+// FILTER HANDLERS
+// ========================================
+function setupFilters() {
+    // Search
+    document.getElementById('filter-search').addEventListener('input', (e) => {
+        currentFilter.search = e.target.value;
+        renderProducts();
+    });
+
+    // Header search
+    document.getElementById('header-search').addEventListener('input', (e) => {
+        currentFilter.search = e.target.value;
+        document.getElementById('filter-search').value = e.target.value;
+        renderProducts();
+        if (e.target.value && window.scrollY < 400) {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    document.getElementById('search-btn').addEventListener('click', () => {
+        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Category
+    document.getElementById('filter-category').addEventListener('change', (e) => {
+        currentFilter.category = e.target.value;
+        renderProducts();
+    });
+
+    // Price range
+    document.getElementById('price-range').addEventListener('input', (e) => {
+        currentFilter.maxPrice = parseInt(e.target.value);
+        document.getElementById('price-value').textContent = `Rs. 0 - ${formatPrice(currentFilter.maxPrice)}`;
+        renderProducts();
+    });
+
+    // Condition checkboxes
+    document.querySelectorAll('.condition-filter').forEach(cb => {
+        cb.addEventListener('change', () => {
+            currentFilter.conditions = Array.from(document.querySelectorAll('.condition-filter:checked'))
+                .map(cb => cb.value);
+            renderProducts();
+        });
+    });
+
+    // Location
+    document.getElementById('filter-location').addEventListener('change', (e) => {
+        currentFilter.location = e.target.value;
+        renderProducts();
+    });
+
+    // Sort
+    document.getElementById('sort-by').addEventListener('change', (e) => {
+        currentFilter.sort = e.target.value;
+        renderProducts();
+    });
+
+    // Reset filters
+    document.getElementById('reset-filters').addEventListener('click', () => {
+        currentFilter = {
+            search: '',
+            category: 'all',
+            maxPrice: 500000,
+            conditions: ['Like New', 'Good', 'Used'],
+            location: 'all',
+            sort: 'newest'
+        };
+
+        document.getElementById('filter-search').value = '';
+        document.getElementById('header-search').value = '';
+        document.getElementById('filter-category').value = 'all';
+        document.getElementById('price-range').value = 500000;
+        document.getElementById('price-value').textContent = 'Rs. 0 - Rs. 500,000';
+        document.querySelectorAll('.condition-filter').forEach(cb => cb.checked = true);
+        document.getElementById('filter-location').value = 'all';
+        document.getElementById('sort-by').value = 'newest';
+
+        renderProducts();
+        showToast('Filters reset', 'info');
+    });
+
+    // Clear filters button (empty state)
+    document.getElementById('clear-filters-btn').addEventListener('click', () => {
+        document.getElementById('reset-filters').click();
+    });
+}
+
+// ========================================
+// MOBILE FILTER SIDEBAR
+// ========================================
+function setupMobileFilters() {
+    const toggle = document.getElementById('filter-toggle');
+    const sidebar = document.getElementById('filters-sidebar');
+    const close = document.getElementById('close-filters');
+
+    toggle.addEventListener('click', () => {
+        sidebar.classList.add('active');
+    });
+
+    close.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+
+    // Close when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            sidebar.classList.contains('active') &&
+            !sidebar.contains(e.target) &&
+            !toggle.contains(e.target)) {
+            sidebar.classList.remove('active');
+        }
+    });
+}
+
+// ========================================
+// CATEGORY CLICK HANDLERS
+// ========================================
+function setupCategories() {
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const category = card.dataset.category;
+            document.getElementById('filter-category').value = category;
+            currentFilter.category = category;
+            renderProducts();
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Footer category links
+    document.querySelectorAll('.footer-links a[data-cat]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = link.dataset.cat;
+            document.getElementById('filter-category').value = category;
+            currentFilter.category = category;
+            renderProducts();
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+}
+
+// ========================================
+// SELL FORM
+// ========================================
+function setupSellForm() {
+    const form = document.getElementById('sell-form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Validation
+        const title = document.getElementById('sell-title').value.trim();
+        const category = document.getElementById('sell-category').value;
+        const price = parseFloat(document.getElementById('sell-price').value);
+        const condition = document.getElementById('sell-condition').value;
+        const description = document.getElementById('sell-description').value.trim();
+        const location = document.getElementById('sell-location').value;
+        const seller = document.getElementById('sell-seller').value.trim();
+        const phone = document.getElementById('sell-phone').value.trim();
+
+        if (!title || !category || !price || !condition || !description || !location || !seller || !phone) {
+            showToast('Please fill in all required fields', 'error');
+            return;
+        }
+
+        // Phone validation (Sri Lankan format)
+        const phoneRegex = /^(07|00947|\+947)[0-9]{8}$/;
+        if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+            showToast('Please enter a valid Sri Lankan phone number', 'error');
+            return;
+        }
+
+        // Create new product
+        const newProduct = {
+            id: Date.now(),
+            name: title,
+            category: category,
+            condition: condition,
+            price: price,
+            oldPrice: null,
+            location: location,
+            seller: seller,
+            phone: phone,
+            description: description,
+            image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
+            date: new Date().toISOString().split('T')[0],
+            popularity: 0
+        };
+
+        // Handle image upload
+        const fileInput = document.getElementById('sell-image');
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                newProduct.image = e.target.result;
+                products.unshift(newProduct);
+                renderProducts();
+                showToast('Your item has been listed successfully!', 'success');
+                form.reset();
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        } else {
+            products.unshift(newProduct);
+            renderProducts();
+            showToast('Your item has been listed successfully!', 'success');
+            form.reset();
+        }
+    });
+}
+
+// ========================================
+// CONTACT FORM
+// ========================================
+function setupContactForm() {
+    const form = document.getElementById('contact-form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast('Message sent successfully! We will get back to you soon.', 'success');
+        form.reset();
+    });
+}
+
+// ========================================
+// AUTH MODAL
+// ========================================
+function setupAuthModal() {
+    // Tab switching
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const target = tab.dataset.tab;
+            document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+            document.getElementById(`${target}-form`).classList.add('active');
+        });
+    });
+
+    // Login form
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast('Login successful! Welcome back.', 'success');
+        closeModal('auth-modal');
+    });
+
+    // Register form
+    document.getElementById('register-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const password = e.target.querySelector('input[type="password"]').value;
+        const confirmPassword = e.target.querySelectorAll('input[type="password"]')[1].value;
+
+        if (password !== confirmPassword) {
+            showToast('Passwords do not match!', 'error');
+            return;
+        }
+
+        showToast('Account created successfully! Please login.', 'success');
+        document.querySelector('.auth-tab[data-tab="login"]').click();
+    });
+}
+
+// ========================================
+// MOBILE NAVIGATION
+// ========================================
+function setupMobileNav() {
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navbar.classList.toggle('active');
+    });
+
+    // Close mobile nav when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navbar.classList.remove('active');
+        });
+    });
+}
+
+// ========================================
+// HEADER SCROLL EFFECT
+// ========================================
+function setupHeaderScroll() {
+    const header = document.getElementById('header');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
+// ========================================
+// BACK TO TOP
+// ========================================
+function setupBackToTop() {
+    const btn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ========================================
+// ACTIVE NAV LINK
+// ========================================
+function setupActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+// ========================================
+// MODAL TOGGLE BUTTONS
+// ========================================
+function setupModalToggles() {
+    document.getElementById('cart-toggle').addEventListener('click', () => {
+        renderCart();
+        openModal('cart-modal');
+    });
+
+    document.getElementById('wishlist-toggle').addEventListener('click', () => {
+        renderWishlist();
+        openModal('wishlist-modal');
+    });
+
+    document.getElementById('login-toggle').addEventListener('click', () => {
+        openModal('auth-modal');
+    });
+
+    // Close buttons
+    document.querySelectorAll('.modal-close').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modal = btn.closest('.modal');
+            closeModal(modal.id);
+        });
+    });
+
+    // Close on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', () => {
+            const modal = overlay.closest('.modal');
+            closeModal(modal.id);
+        });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeAllModals();
+        }
+    });
+
+    // Clear cart
+    document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
+}
+
+// ========================================
+// LOADING SCREEN
+// ========================================
+function hideLoadingScreen() {
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('hidden');
+    }, 800);
+}
+
+// ========================================
+// INITIALIZATION
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Update counts
+    updateCartCount();
+    updateWishlistCount();
+
+    // Render initial products
+    renderProducts();
+
+    // Setup all event listeners
+    setupFilters();
+    setupMobileFilters();
+    setupCategories();
+    setupSellForm();
+    setupContactForm();
+    setupAuthModal();
+    setupMobileNav();
+    setupHeaderScroll();
+    setupBackToTop();
+    setupActiveNav();
+    setupModalToggles();
+
+    // Hide loading screen
+    hideLoadingScreen();
+
+    // Show welcome toast
+    setTimeout(() => {
+        showToast('Welcome to Dumith Online Market!', 'success');
+    }, 1200);
+});

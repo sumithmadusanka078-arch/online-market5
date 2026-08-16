@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dumith Online Market | Buy & Sell Second-Hand</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<base target="_blank">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>Dumith Online Market</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-store"></i>
+                <span>Dumith<span class="highlight">Market</span></span>
+            </a>
+
+            <nav id="navbar">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#sell">Sell Item</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" id="header-search" placeholder="Search products...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="icon-btn" id="wishlist-toggle" title="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="wishlist-count">0</span>
+                </button>
+                <button class="icon-btn" id="cart-toggle" title="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+                <button class="icon-btn" id="login-toggle" title="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-tag"><i class="fas fa-recycle"></i> Sustainable Shopping</span>
+                <h1>Buy Smart. Sell Easy.<br><span class="gradient-text">Shop Second-Hand.</span></h1>
+                <p>Discover quality pre-owned products at unbeatable prices. Join thousands of smart shoppers who choose sustainable, affordable shopping every day.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a>
+                    <a href="#sell" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Sell Your Item</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5K+</span>
+                        <span class="stat-label">Happy Users</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=500&fit=crop" alt="Marketplace">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Verified Sellers</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Deals</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Browse by Category</span>
+                <h2>Explore Our Categories</h2>
+                <p>Find exactly what you're looking for across our wide range of categories</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="mobile-phones">
+                    <div class="category-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile Phones</h3>
+                    <span class="category-count">1,240 items</span>
+                </div>
+                <div class="category-card" data-category="laptops-computers">
+                    <div class="category-icon"><i class="fas fa-laptop"></i></div>
+                    <h3>Laptops & Computers</h3>
+                    <span class="category-count">856 items</span>
+                </div>
+                <div class="category-card" data-category="electronics">
+                    <div class="category-icon"><i class="fas fa-tv"></i></div>
+                    <h3>Electronics</h3>
+                    <span class="category-count">2,103 items</span>
+                </div>
+                <div class="category-card" data-category="furniture">
+                    <div class="category-icon"><i class="fas fa-couch"></i></div>
+                    <h3>Furniture</h3>
+                    <span class="category-count">945 items</span>
+                </div>
+                <div class="category-card" data-category="vehicles">
+                    <div class="category-icon"><i class="fas fa-motorcycle"></i></div>
+                    <h3>Vehicles</h3>
+                    <span class="category-count">432 items</span>
+                </div>
+                <div class="category-card" data-category="fashion">
+                    <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                    <h3>Fashion</h3>
+                    <span class="category-count">3,210 items</span>
+                </div>
+                <div class="category-card" data-category="home-appliances">
+                    <div class="category-icon"><i class="fas fa-blender"></i></div>
+                    <h3>Home Appliances</h3>
+                    <span class="category-count">678 items</span>
+                </div>
+                <div class="category-card" data-category="other">
+                    <div class="category-icon"><i class="fas fa-ellipsis-h"></i></div>
+                    <h3>Other</h3>
+                    <span class="category-count">1,567 items</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Marketplace</span>
+                <h2>Featured Products</h2>
+                <p>Handpicked pre-owned items in excellent condition</p>
+            </div>
+
+            <div class="products-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar" id="filters-sidebar">
+                    <div class="filters-header">
+                        <h3><i class="fas fa-filter"></i> Filters</h3>
+                        <button class="close-filters" id="close-filters"><i class="fas fa-times"></i></button>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Search</label>
+                        <div class="filter-search">
+                            <input type="text" id="filter-search" placeholder="Search products...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Category</label>
+                        <select id="filter-category">
+                            <option value="all">All Categories</option>
+                            <option value="mobile-phones">Mobile Phones</option>
+                            <option value="laptops-computers">Laptops & Computers</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="vehicles">Vehicles</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="home-appliances">Home Appliances</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Price Range: <span id="price-value">Rs. 0 - Rs. 500,000</span></label>
+                        <div class="price-range">
+                            <input type="range" id="price-range" min="0" max="500000" value="500000" step="1000">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Condition</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="Like New" class="condition-filter" checked>
+                                <span class="checkmark"></span>
+                                Like New
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="Good" class="condition-filter" checked>
+                                <span class="checkmark"></span>
+                                Good
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="Used" class="condition-filter" checked>
+                                <span class="checkmark"></span>
+                                Used
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Location</label>
+                        <select id="filter-location">
+                            <option value="all">All Locations</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Gampaha">Gampaha</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Jaffna">Jaffna</option>
+                            <option value="Negombo">Negombo</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-secondary btn-full" id="reset-filters">
+                        <i class="fas fa-undo"></i> Reset Filters
+                    </button>
+                </aside>
+
+                <!-- Products Area -->
+                <div class="products-main">
+                    <div class="products-toolbar">
+                        <button class="btn btn-filter-toggle" id="filter-toggle">
+                            <i class="fas fa-filter"></i> Filters
+                        </button>
+                        <div class="products-count">
+                            Showing <span id="showing-count">0</span> of <span id="total-count">0</span> products
+                        </div>
+                        <div class="sort-box">
+                            <label>Sort by:</label>
+                            <select id="sort-by">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products rendered by JS -->
+                    </div>
+
+                    <div class="empty-state" id="empty-products" style="display:none;">
+                        <i class="fas fa-search"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                        <button class="btn btn-primary" id="clear-filters-btn">Clear Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sell Your Item Section -->
+    <section id="sell" class="sell-section">
+        <div class="container">
+            <div class="sell-layout">
+                <div class="sell-info">
+                    <span class="section-tag">Start Selling</span>
+                    <h2>Sell Your Pre-Owned Items</h2>
+                    <p>Turn your unused items into cash. Listing is free and takes less than 2 minutes.</p>
+                    <ul class="sell-benefits">
+                        <li><i class="fas fa-check"></i> Free to list your items</li>
+                        <li><i class="fas fa-check"></i> Reach thousands of buyers</li>
+                        <li><i class="fas fa-check"></i> Secure messaging system</li>
+                        <li><i class="fas fa-check"></i> Quick and easy process</li>
+                    </ul>
+                </div>
+                <div class="sell-form-wrapper">
+                    <form id="sell-form" class="sell-form">
+                        <h3><i class="fas fa-plus-circle"></i> List Your Item</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Product Title *</label>
+                                <input type="text" id="sell-title" placeholder="e.g., iPhone 13 Pro 256GB" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Category *</label>
+                                <select id="sell-category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="mobile-phones">Mobile Phones</option>
+                                    <option value="laptops-computers">Laptops & Computers</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="furniture">Furniture</option>
+                                    <option value="vehicles">Vehicles</option>
+                                    <option value="fashion">Fashion</option>
+                                    <option value="home-appliances">Home Appliances</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Price (Rs.) *</label>
+                                <input type="number" id="sell-price" placeholder="e.g., 45000" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Condition *</label>
+                                <select id="sell-condition" required>
+                                    <option value="">Select Condition</option>
+                                    <option value="Like New">Like New</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Used">Used</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description *</label>
+                            <textarea id="sell-description" rows="3" placeholder="Describe your item..." required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Location *</label>
+                                <select id="sell-location" required>
+                                    <option value="">Select Location</option>
+                                    <option value="Colombo">Colombo</option>
+                                    <option value="Gampaha">Gampaha</option>
+                                    <option value="Kandy">Kandy</option>
+                                    <option value="Galle">Galle</option>
+                                    <option value="Jaffna">Jaffna</option>
+                                    <option value="Negombo">Negombo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Name *</label>
+                                <input type="text" id="sell-seller" placeholder="Your full name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="sell-phone" placeholder="07X XXX XXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Product Image</label>
+                            <div class="file-upload">
+                                <input type="file" id="sell-image" accept="image/*">
+                                <div class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Click to upload image</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Publish Listing
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=500&fit=crop" alt="About Dumith Market">
+                    <div class="about-experience">
+                        <span class="exp-number">5+</span>
+                        <span class="exp-text">Years of<br>Excellence</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">About Us</span>
+                    <h2>About Dumith Online Market</h2>
+                    <p>Dumith Online Market is Sri Lanka's trusted second-hand marketplace, connecting buyers and sellers for quality pre-owned products. We believe in sustainable shopping that benefits both your wallet and the environment.</p>
+                    <p>Our platform makes it easy to find great deals on everything from electronics and vehicles to furniture and fashion. Every listing is reviewed to ensure quality and accuracy.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <div>
+                                <h4>Best Prices</h4>
+                                <p>Quality items at fraction of retail cost</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h4>Eco-Friendly</h4>
+                                <p>Reduce waste by giving items a second life</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Community</h4>
+                                <p>Trusted local buyers and sellers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get in Touch</span>
+                <h2>Contact Us</h2>
+                <p>Have questions? We're here to help you</p>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Us</h4>
+                        <p>support@dumithmarket.lk</p>
+                        <p>sales@dumithmarket.lk</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h4>Call Us</h4>
+                        <p>+94 77 123 4567</p>
+                        <p>+94 11 234 5678</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Visit Us</h4>
+                        <p>123 Main Street</p>
+                        <p>Colombo 03, Sri Lanka</p>
+                    </div>
+                    <div class="contact-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form id="contact-form" class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="How can we help?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="4" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-store"></i>
+                        <span>Dumith<span class="highlight">Market</span></span>
+                    </a>
+                    <p>Sri Lanka's most trusted second-hand marketplace. Buy smart, sell easy, shop sustainably.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#sell">Sell Item</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#" data-cat="mobile-phones">Mobile Phones</a></li>
+                        <li><a href="#" data-cat="laptops-computers">Laptops</a></li>
+                        <li><a href="#" data-cat="electronics">Electronics</a></li>
+                        <li><a href="#" data-cat="furniture">Furniture</a></li>
+                        <li><a href="#" data-cat="vehicles">Vehicles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Tips</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Report an Issue</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dumith Online Market. All rights reserved. Developed by <strong>Dumith</strong>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ================= MODALS ================= -->
+
+    <!-- Product Details Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-large">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="product-details" id="product-details-content">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-medium">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="cart-modal-content">
+                <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+                <div class="cart-items" id="cart-items">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="cart-empty" id="cart-empty">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Your cart is empty</p>
+                    <button class="btn btn-primary" onclick="closeModal('cart-modal');location.href='#products'">Start Shopping</button>
+                </div>
+                <div class="cart-footer" id="cart-footer">
+                    <div class="cart-summary">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">Rs. 0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Delivery</span>
+                            <span>Free</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="cart-total">Rs. 0</span>
+                        </div>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="btn btn-outline" id="clear-cart-btn">
+                            <i class="fas fa-trash"></i> Clear Cart
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-credit-card"></i> Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="modal" id="wishlist-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-medium">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="wishlist-modal-content">
+                <h2><i class="fas fa-heart"></i> Your Wishlist</h2>
+                <div class="wishlist-items" id="wishlist-items">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="wishlist-empty" id="wishlist-empty">
+                    <i class="fas fa-heart-broken"></i>
+                    <p>Your wishlist is empty</p>
+                    <button class="btn btn-primary" onclick="closeModal('wishlist-modal');location.href='#products'">Browse Products</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-small">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <h3>Welcome Back!</h3>
+                <p>Login to access your account</p>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+                <div class="auth-divider"><span>or</span></div>
+                <div class="social-login">
+                    <button type="button" class="btn-social google"><i class="fab fa-google"></i></button>
+                    <button type="button" class="btn-social facebook"><i class="fab fa-facebook-f"></i></button>
+                </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form">
+                <h3>Create Account</h3>
+                <p>Join our community today</p>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Min 6 characters" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
